@@ -58,6 +58,8 @@
                 type="java.lang.String"/>
        </form-bean>
     end sample -->
+    <form-bean name="startForm" type="inaStruts.ActionForm.StartForm" />
+    
     </form-beans>
 
 
@@ -93,6 +95,11 @@
             path="/Welcome"
             forward="/pages/Welcome.jsp"/>
 
+	
+ <action path="/startAction" type="inaStruts.startAction"
+     name="startForm" scope="request" >
+    		<forward name="success" path="/end.jsp" />
+ </action> 
     <!-- sample input and input submit actions
 
         <action
