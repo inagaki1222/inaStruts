@@ -17,12 +17,12 @@ public abstract class InaAbstractAction extends Action {
 
 		preProcess();
 		
-		return executeLogic();
+		return executeLogic(mapping, form, request, response);
 		
 	}
 	
 	public abstract boolean preProcess();
 
-	public abstract ActionForward executeLogic();
+	public abstract ActionForward executeLogic(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response);
 
 }
