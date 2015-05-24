@@ -2,7 +2,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <html:html>
   <head>
-    <title>Start</title>
+    <title>Start(local�ŕύX)</title>
   </head>
   <body>
     <h4>Start JSP</h4>
