@@ -8,7 +8,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public abstract class inaAbstractAction extends Action {
+public abstract class InaAbstractAction extends Action {
 	
 	@Override
 	final public ActionForward execute(ActionMapping mapping, ActionForm form,

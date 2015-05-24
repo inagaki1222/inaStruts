@@ -2,7 +2,7 @@ package inaStruts;
 
 import org.apache.struts.action.ActionForward;
 
-public class startAction extends inaAbstractAction {
+public class StartAction extends InaAbstractAction {
 
 	@Override
 	public boolean preProcess() {

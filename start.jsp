@@ -6,7 +6,7 @@
   </head>
   <body>
     <h4>Start JSP</h4>
-    <html:form action="/startAction">
+    <html:form action="/StartAction">
     <table>
     <tr>
       <td><font size="3">Id</font></td>

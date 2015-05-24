@@ -96,7 +96,7 @@
             forward="/pages/Welcome.jsp"/>
 
 	
- <action path="/startAction" type="inaStruts.startAction"
+ <action path="/StartAction" type="inaStruts.StartAction"
      name="startForm" scope="request" >
     		<forward name="success" path="/end.jsp" />
  </action> 
