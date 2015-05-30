@@ -4,6 +4,7 @@
 <title>Google Maps API v3</title>
 <meta charset="utf-8" />
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript">
 	function initialize(){
 		// 地図を作成
@@ -28,7 +29,23 @@
 		
 		// ボタンが押されたら、マーカーのアイコンの画像を変更する
 		google.maps.event.addDomListener(wentBtn, "click", function(){
-			marker.setIcon(iconTxt.value);
+			
+            // ajax起動
+            $.ajax({
+            url: "ajax-test",
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            data: {
+            },
+            success: function(json){
+              $('#result').text(json.test);
+              $('#wentBtn').attr("value","コメントを書く");
+            },
+            error: function(xhr, textStatus, errorThrown){
+              alert('Error');
+            }
+  });
 		});
 		
 		// 情報ウィンドウを表示
@@ -63,7 +80,7 @@
 			<input type="button" id="goingBtn" value="行きたい" />            
 		</div>
 	</form>
-    <div>
+    <div id="result">
     こちら
     </div>
 </body>
