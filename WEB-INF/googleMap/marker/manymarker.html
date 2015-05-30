@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&hl=ja"></script>
+<script type="text/javascript">
+  var map_canvas, marker_list;
+  function initialize() {
+    //マーカーを管理するためのmarker_list
+    marker_list = new google.maps.MVCArray();
+
+    var initPos = new google.maps.LatLng(35.127152, 138.910627);
+    var myOptions = {
+      noClear : true,
+      center : initPos,
+      zoom : 5,
+      mapTypeId : google.maps.MapTypeId.ROADMAP
+    };
+    map_canvas = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    google.maps.event.addListenerOnce(map_canvas, "bounds_changed", load);
+  };
+  
+  function load(){
+    //適当にマーカーを作成
+    var bounds = map_canvas.getBounds();
+    var sw = bounds.getSouthWest();
+    var ne = bounds.getNorthEast();
+    for(var i = 0; i < 10000; i++) {
+      var lat = Math.random() * (ne.lat() - sw.lat()) + sw.lat();
+      var lng = Math.random() * (ne.lng() - sw.lng()) + sw.lng();
+      var latlng = new google.maps.LatLng(lat, lng);
+      
+      
+      //マーカーを作成したら marker_list に追加
+      var marker = createMarker(map_canvas, latlng);
+      marker_list.push(marker);
+    }
+  }
+  function createMarker(map, latlng) {
+    var marker = new google.maps.Marker();
+    marker.setPosition(latlng);
+    marker.setMap(map);
+    return marker;
+  }
+  function removeMarkers() {
+    //ボタンが押されたら、マーカーの配列に対して
+    //setMap(null)を実行し、地図から削除
+    marker_list.forEach(function(marker, idx) {
+      marker.setMap(null);
+    });
+  }
+  google.maps.event.addDomListenerOnce(window, "load", initialize);
+</script>
+
+
+<div id="map_canvas" style="width:100%; height:100%"></div>
+<input type="button" onclick="removeMarkers();" value="マーカーを全て削除する"><br>
+</html>
